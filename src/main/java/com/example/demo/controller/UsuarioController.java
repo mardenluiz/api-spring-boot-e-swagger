@@ -2,47 +2,53 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import com.example.demo.repository.UsuarioRepository;
+import com.example.demo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Usuario;
-import com.example.demo.repository.UsuarioRepository;
 
 @RequestMapping("/users")
 @RestController
 public class UsuarioController {
-	
-	@Autowired
+
 	private UsuarioRepository repository;
-	
+
+	private UsuarioService service;
+
+	public UsuarioController(UsuarioRepository repository, UsuarioService service) {
+		this.repository = repository;
+		this.service = service;
+	}
+
 	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	public List<Usuario> getUser() {
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{username}")
+	@ResponseStatus(HttpStatus.OK)
 	public Usuario getOne(@PathVariable("username") String username) {
-		return repository.findByUsername(username);
+		return repository.findByLogin(username);
 	}
 	
 	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteUser(@PathVariable("id") Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
 	public void saveUser(@RequestBody Usuario usuario) {
-		repository.save(usuario);
+		service.saveUser(usuario);
 	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
 	public void putUser(@RequestBody Usuario usuario) {
 		repository.save(usuario);
 	}

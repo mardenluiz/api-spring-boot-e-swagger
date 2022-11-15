@@ -1,7 +1,15 @@
 package com.example.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String login;
 	private String password;
@@ -13,7 +21,6 @@ public class Usuario {
 		this.login = login;
 		this.password = password;
 	}
-	
 
 	public Integer getId() {
 		return id;
@@ -39,13 +46,4 @@ public class Usuario {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario {"
-				+ "login=" + login + ","
-				+ " password=" + password + 
-			"}";
-	}
-	
-	
 }
