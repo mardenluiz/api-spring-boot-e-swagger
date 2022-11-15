@@ -2,13 +2,13 @@
 
 - Tecnologias utilizadas
 
-  Java - 17
-  Spring Web
-  Spring Data Jpa
-  MySql
-  Swagger2
+  Java - 17<br>
+  Spring Web<br>
+  Spring Data Jpa<br>
+  MySql<br>
+  Swagger2<br>
 
-Api Simples, abordando conceitos de documentação com swagger e tratamento de erros
+Api Simples, abordando conceitos de documentação com swagger e tratamento de erros<br>
 
-Potência Tech powered by iFood - Java Beginners
+Potência Tech powered by iFood - Java Beginners<br>
 Digital innovation one e Ifood
