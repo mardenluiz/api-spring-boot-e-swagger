@@ -1,5 +1,4 @@
-# api-spring-boot-e-swagger
-Criando uma API REST Documentada com Spring Web e Swagger
+# Criando uma API REST Documentada com Spring Web e Swagger
 
 - Tecnologias utilizadas
 
